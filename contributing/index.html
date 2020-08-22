@@ -603,9 +603,11 @@ Sessions defined in /home/csmith/git/pipx/noxfile.py:
 <p>To create a new release</p>
 <ul>
 <li>Update pipx's version in <code>src/pipx/version.py</code> and regenerate documentation.</li>
-<li>Make sure the changelog is updated</li>
+<li>Make sure the changelog is updated<ul>
 <li>Add new version to head the latest block of changes (instead of "dev").</li>
 <li>Make sure all notable changes are listed.</li>
+</ul>
+</li>
 </ul>
 <p>Finally, run</p>
 <pre><code class="bash">nox -s publish
