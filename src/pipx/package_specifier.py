@@ -6,6 +6,7 @@
 #   <pypi_package_name><version_specifier>
 
 import logging
+import re
 import textwrap
 from pathlib import Path
 from typing import List, NamedTuple, Optional, Set, Tuple
@@ -57,7 +58,8 @@ def _parse_specifier(package_spec: str) -> ParsedPackage:
             valid_url = package_spec
 
     if not valid_pep508 and not valid_url:
-        package_path = Path(package_spec)
+        package_spec_without_extras = re.sub(r'\[.+\].*', '', package_spec)
+        package_path = Path(package_spec_without_extras)
         try:
             package_path_exists = package_path.exists()
         except OSError:
